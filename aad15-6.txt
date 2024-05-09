@@ -1,0 +1,16 @@
+MOV AX, '21'
+MOV BX, '10'
+
+
+SUB AX, 3030H
+SUB BX, 3030H
+
+AAD
+
+XCHG AX, BX
+
+AAD
+
+XCHG AX, BX
+
+DIV BL
