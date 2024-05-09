@@ -1,0 +1,33 @@
+MOV AX, 0010
+MOV BX, 0008
+
+CMP AX, BX
+JA START
+
+XCHG AX, BX 
+
+START:
+    MOV [7000H], AX 
+    MOV [7002H], BX
+    MOV CX, BX 
+   
+CALL_LOOP:  
+    MOV AX, [7000H]
+    MOV DX, 0000H
+    DIV BX
+    CMP DX, 0000H
+    JE CHECK_LOWER_NUM
+    BACK: 
+        DEC BX 
+        JMP CALL_LOOP
+                    
+CHECK_LOWER_NUM: 
+    MOV AX, CX
+    MOV DX, 0000H 
+    DIV BX
+    CMP DX, 0000H
+    JE END
+    JMP BACK                   
+                
+END:
+    HLT

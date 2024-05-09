@@ -1,0 +1,17 @@
+MOV DX, 6
+MOV BX, 1
+MOV CX, 1
+
+
+CALL_LOOP:    
+    MOV AX, BX   
+    ADD AX, CX
+    MOV BX, CX
+    MOV CX, AX
+    DEC DX
+    CMP DX, 2
+    JE END
+    JMP CALL_LOOP
+    
+END:
+    HLT

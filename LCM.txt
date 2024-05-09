@@ -1,0 +1,26 @@
+MOV AX, 00021
+MOV BX, 00015
+
+CMP AX, BX
+JA HERE
+
+XCHG AX, BX 
+
+HERE:
+    MOV [7000H], AX
+    MOV [7002H], AX  
+
+   
+CALL_LOOP:
+    DIV BX
+    CMP DX, 0000H
+    JE END
+    MOV AX, [7000H]
+    ADD AX, [7002H]
+    MOV [7000H], AX 
+    MOV DX, 0000H 
+    JMP CALL_LOOP
+
+
+END:
+    HLT

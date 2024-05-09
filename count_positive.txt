@@ -1,0 +1,27 @@
+MOV [7000H], 1234H      
+MOV [7002H], 8234H
+MOV [7004H], 8234H
+MOV [7006H], 8234H
+MOV [7008H], 8234H
+MOV [7010H], 0000H 
+
+MOV CX, 0005H
+MOV BX, 7000H
+MOV AX, 0000H
+
+CALL_LOOP:
+    AND [BX], 8000H
+    JZ FORWARD
+    INC AX
+    FORWARD: 
+        INC BX
+        INC BX 
+        DEC CX       
+        CMP CX, 0000H
+        JE END
+        JMP CALL_LOOP     
+
+END:
+    
+    HLT
+    
