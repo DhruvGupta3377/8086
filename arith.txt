@@ -1,0 +1,23 @@
+MOV AL, 0ABH
+MOV BL, 0CH
+ADD AL, BL   
+;HLT    
+    
+MOV AL, 0ABH
+MOV BL, 0CH
+SUB AL, BL   
+;HLT      
+    
+MOV AX, 0AH
+MOV BX, 03H
+MUL BX
+;HLT 
+
+DIV BX
+;HLT
+
+MOV [7000], 0ABH  
+MOV AL, [7000]    
+MOV BL, 0CH
+ADD AL, BL    
+;HLT
